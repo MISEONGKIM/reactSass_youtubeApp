@@ -1,7 +1,27 @@
 import * as React from "react";
+import { IoMenu as Menu } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import imgUrl from "../../../assets/logo.png";
 
 const LeftNav = () => {
-  return <div></div>;
+  return (
+    <div className="menu-logo">
+      <button className="icon-container burgerMenu">
+        <Menu size={25} />
+      </button>
+
+      <div className="logo-container">
+        <Link to="/">
+          <img
+            src={imgUrl}
+            alt="youtube logo"
+            data-tip="Youtube Home"
+            data-for="sidebar"
+          />
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default LeftNav;

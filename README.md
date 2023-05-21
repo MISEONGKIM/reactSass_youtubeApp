@@ -35,3 +35,5 @@ Mixin은 소스코드의 중복을 막기 위해 사용하고, Extend, %placehol
 
 - -webkit-scrollbar-thumb : 마우스로 움직이는 스크롤바 막대를 꾸밈
 - -webkit-scrollbar-track : 스크롤바 막대가 움직이는 영역 뒷 배경을 꾸밈
+
+* flex-basis : flex item의 크기를 설정, 이때 axis 방향으로의 크기를 설정한다.(flex-direction: column인 경우 높이가 변한다)
