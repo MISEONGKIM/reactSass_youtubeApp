@@ -1,8 +1,6 @@
 import * as React from "react";
 
-interface IMainPageProps {}
-
-const MainPage: React.FunctionComponent<IMainPageProps> = () => {
+const MainPage = () => {
   return <div>MainPage</div>;
 };
 

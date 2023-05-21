@@ -1,7 +1,7 @@
 import * as React from "react";
 
-const VideoPage = () => {
+const SearchBar = () => {
   return <div></div>;
 };
 
-export default VideoPage;
+export default SearchBar;
