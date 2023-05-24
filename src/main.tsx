@@ -5,12 +5,15 @@ import App from "./App.tsx";
 import { SearchContextProvider } from "./context/SearchContext.tsx";
 
 import "./scss/main.scss";
+import { SideBarContextProvider } from "./context/SideBarContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <SearchContextProvider>
-        <App />
+        <SideBarContextProvider>
+          <App />
+        </SideBarContextProvider>
       </SearchContextProvider>
     </BrowserRouter>
   </React.StrictMode>

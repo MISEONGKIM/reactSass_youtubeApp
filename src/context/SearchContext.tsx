@@ -1,21 +1,26 @@
-import React, { ReactElement } from "react";
+import React, { ReactNode } from "react";
 import { createContext, useState } from "react";
 
-interface SearchContextType {
+interface ContextStateType {
   showSpecialSearchBar: boolean;
   setShowSpecialSearchBar: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const SearchContext = createContext<SearchContextType>(
-  {} as SearchContextType
+export const SearchContext = createContext<ContextStateType>(
+  {} as ContextStateType
 );
 
-export const SearchContextProvider = (props: ReactElement) => {
+export const SearchContextProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const [showSpecialSearchBar, setShowSpecialSearchBar] = useState(false);
 
   return (
     <SearchContext.Provider
       value={{ showSpecialSearchBar, setShowSpecialSearchBar }}
-      {...props}
-    />
+    >
+      {children}{" "}
+    </SearchContext.Provider>
   );
 };
