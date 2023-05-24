@@ -26,6 +26,16 @@
 - Scss => 문법
 - 주로 Sass 사용할 때 ,좀 더 css랑 닮은 Scss 문법을 기반으로 작성하고 이것을 Sass전처리기로 css로 만들어주고, 그걸 브라우저에서 보여주도록
 
+### Sass 특징
+
+- Variables : 변수 $기호
+- Nesting : Sass를 사용하면 HTML의 동일한 시각적 계층 구조를 따르는 방식으로 CSS 선택기를 중첩할 수 있다.
+- Partials : 부분 파일은 앞에 밑줄이 붙은 이름의 Sass 파일이다. CSS 파일로 생성되어서는 안 된다는 것을 Sass가 알 수 있음. \_partial.scss와 같은 이름을 지정하며 @use 규칙과 함께 사용한다.
+- Modules : @use를 사용하여 가져온 스타일시트를 모듈(Module)이라고 부름.
+- Mixins : 재사용하려는 CSS 선언 그룹 만들 수 있음.
+- Extend/Inheritance : @extend를 사용하면 한 선택기에서 다른 선택기로 CSS 속성 집합을 공유.
+- Operators : Sass에는 +, -, \*, math.div() 및 %와 같은 소수의 표준 수학 연산자가 있음.
+
 ### Mixins vs Extend
 
 Mixin은 소스코드의 중복을 막기 위해 사용하고, Extend, %placeholder은 연관성 있는 규칙에 만들기 위해 사용합니다.
