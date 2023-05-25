@@ -1,35 +1,41 @@
-import axios from "axios";
 import * as React from "react";
 import { SideBarContext } from "../../context/SideBarContext";
-import { getVideoInfo } from "../../helpers/fetchingData";
+import { getMainVideos } from "../../api/axios";
+import VideoCard from "../../components/VideoCard";
 
 const MainPage = () => {
-  const storedVideos = JSON.parse(localStorage.getItem("mainVideos"));
-  const [mainVideos, setMainVideos] = React.useState(storedVideos || []);
+  const storedVideos = localStorage.getItem("mainVideos");
+  const [mainVideos, setMainVideos] = React.useState<Record<string, any>[]>(
+    storedVideos ? JSON.parse(storedVideos) : []
+  );
   const { setIsToggled } = React.useContext(SideBarContext);
 
-  const getMainVideos = React.useCallback(async () => {
-    try {
-      if (!storedVideos) {
-        const response = await axios.get(
-          `/search?part=snippet&maxResults=10&q=beautiful%20place`
-        );
-        let videosArray = await response.data.items;
-        videosArray = await getVideoInfo(videosArray);
-        setMainVideos(videosArray);
-
-        localStorage.setItem("mainVideos", JSON.stringify(videosArray));
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const init = React.useCallback(async () => {
+    if (storedVideos) return;
+    const videos = await getMainVideos();
+    setMainVideos(videos);
+    localStorage.setItem("mainVideos", JSON.stringify(videos));
   }, [storedVideos]);
 
   React.useEffect(() => {
-    getMainVideos();
+    init();
   }, [getMainVideos]);
 
-  return <div>MainPage</div>;
+  return (
+    <section className="mainGallery">
+      {mainVideos.map((video) => (
+        <VideoCard
+          key={video.id.videoId}
+          id={video.id.videoId}
+          video={video}
+          img={video.snippet.thumbnails.medium.url}
+          info={video.snippet}
+          eInfo={video.extraInfo}
+          channelInfo={video.channelInfo}
+        />
+      ))}
+    </section>
+  );
 };
 
 export default MainPage;
